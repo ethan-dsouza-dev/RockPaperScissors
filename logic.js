@@ -1,3 +1,6 @@
+const WIN = "You Win! ";
+const LOSE = "You Lose! ";
+
 
 // EFFECTS: returns a random selection between the 3 options of Rock, Paper, and Scissors.
 function getComputerChoice() {
@@ -13,8 +16,6 @@ function playRound(playerSelection, computerSelection) {
     const ROCK_WINS = "Rock beats Scissors";
     const PAPER_WINS = "Paper beats Rock";
     const SCISSORS_WINS = "Scissors beats Paper";
-    const WIN = "You Win! "
-    const LOSE = "You Lose! "
 
     playerSelection = playerSelection.toLowerCase()
     computerSelection = computerSelection.toLowerCase()
@@ -44,5 +45,33 @@ function playRound(playerSelection, computerSelection) {
             return WIN + SCISSORS_WINS;
     }
 
+}
 
+// EFFECTS: runs the game for 5 rounds, keeps score and reports a winner
+function game() {
+    let userChoice;
+    let score = 0;
+
+    for (i = 0; i < 5; i++) {
+        userChoice = prompt("Rock, Paper, or Scissors?");
+        let roundResult = playRound(userChoice, getComputerChoice());
+        console.log(roundResult);
+        if (roundResult.includes(WIN)) {
+            score++;
+            console.log(score);
+        } else {
+            score--;
+            console.log(score);
+        }
+    }
+
+    // Positive score means player is winning
+    // Negatice score means computer is winning
+    if (score > 0) {
+        return `Congrats, you are the Winner by ${score} point/s`
+    } else if (score < 0) {
+        return `Oh No! You lost by ${score * -1} point/s`
+    } else {
+        return `It was a tie!`
+    }
 }
