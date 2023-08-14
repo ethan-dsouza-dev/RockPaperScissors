@@ -1,0 +1,19 @@
+playerSelection | computerSelection
+ROCK		| ROCK	   x
+ROCK		| PAPER
+ROCK		| SCISSORS
+
+PAPER		| ROCK
+PAPER		| PAPER    x
+PAPER		| SCISSORS
+
+SCISSORS	| ROCK
+SCISSORS	| PAPER
+SCISSORS	| SCISSORS x
+
+ROCK > SCISSORS
+PAPER > ROCK
+SCISSORS > PAPER
+
+1. Check if playerSelection === computerSelection, this means there is a tie
+2. If playerSelection === "ROCK" && computerSelection is Paper

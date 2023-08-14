@@ -52,18 +52,18 @@ function game() {
     let userChoice;
     let score = 0;
 
-    for (i = 0; i < 5; i++) {
-        userChoice = prompt("Rock, Paper, or Scissors?");
-        let roundResult = playRound(userChoice, getComputerChoice());
-        console.log(roundResult);
-        if (roundResult.includes(WIN)) {
-            score++;
-            console.log(score);
-        } else {
-            score--;
-            console.log(score);
-        }
-    }
+    // for (i = 0; i < 5; i++) {
+    //     userChoice = prompt("Rock, Paper, or Scissors?");
+    //     let roundResult = playRound(userChoice, getComputerChoice());
+    //     console.log(roundResult);
+    //     if (roundResult.includes(WIN)) {
+    //         score++;
+    //         console.log(score);
+    //     } else {
+    //         score--;
+    //         console.log(score);
+    //     }
+    // }
 
     // Positive score means player is winning
     // Negatice score means computer is winning
