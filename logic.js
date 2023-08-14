@@ -52,18 +52,12 @@ function game() {
     let userChoice;
     let score = 0;
 
-    // for (i = 0; i < 5; i++) {
-    //     userChoice = prompt("Rock, Paper, or Scissors?");
-    //     let roundResult = playRound(userChoice, getComputerChoice());
-    //     console.log(roundResult);
-    //     if (roundResult.includes(WIN)) {
-    //         score++;
-    //         console.log(score);
-    //     } else {
-    //         score--;
-    //         console.log(score);
-    //     }
-    // }
+    const btns = Array.from(document.querySelectorAll('button'));
+    console.log(btns);
+    btns.forEach(btn => btn.addEventListener('click', function () {
+        userChoice = btn.getAttribute('id');
+        playRound(userChoice, getComputerChoice());
+    }));
 
     // Positive score means player is winning
     // Negatice score means computer is winning
@@ -75,3 +69,6 @@ function game() {
         return `It was a tie!`
     }
 }
+
+game();
+
