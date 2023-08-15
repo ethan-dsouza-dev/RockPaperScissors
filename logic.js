@@ -3,6 +3,7 @@ const LOSE = "You Lose! ";
 const ROCK_WINS = "Rock beats Scissors";
 const PAPER_WINS = "Paper beats Rock";
 const SCISSORS_WINS = "Scissors beats Paper";
+const body = document.querySelector('body');
 const resultDiv = document.querySelector('.result');
 const btns = Array.from(document.querySelectorAll('button'));
 
@@ -61,13 +62,18 @@ function updateScoreboard(player, computer) {
 function displayEndMessage(player, computer) {
     // Positive score means player is winning
     // Negatice score means computer is winning
+    const winner = document.createElement('h1');
+    body.appendChild(winner);
     btns.forEach(btn => btn.removeEventListener('click', playRound));
     resultDiv.remove();
     if (player > computer) {
+        winner.textContent = `Congrats, you are the Winner by ${player - computer} point/s`;
         return `Congrats, you are the Winner by ${player - computer} point/s`;
     } else if (player < computer) {
+        winner.textContent = `Oh No! You lost by ${computer - player} point/s`;
         return `Oh No! You lost by ${computer - player} point/s`;
     } else {
+        winner.textContent = `It was a tie!`;
         return `It was a tie!`;
     }
 }
@@ -76,7 +82,7 @@ function displayEndMessage(player, computer) {
 function game() {
     let player = 0;
     let computer = 0;
-    let round = 0;
+    let round = 1;
     btns.forEach(btn => btn.addEventListener('click', function () {
         let userChoice = btn.getAttribute('id');
         let roundResult = playRound(userChoice, getComputerChoice());
@@ -87,13 +93,13 @@ function game() {
             computer++;
         } 
 
-        if (round === 5) {
+        console.log(round);
+        updateScoreboard(player, computer);
+        round++;
+        if (round > 5) {
             displayEndMessage(player, computer);
             return;
         }
-        updateScoreboard(player, computer);
-        round++;
-        console.log(round);
     }));
 
 }
